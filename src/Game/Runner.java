@@ -28,6 +28,19 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+
+		//Create a random key room
+		int x2 = 0;
+		int y2 = 0;
+
+		while(x == x2 && y ==y2) {
+			x2 = (int) (Math.random() * building.length);
+			y2 = (int) (Math.random() * building.length);
+		}
+		building[x][y] = new KeyRoom(x2, y2);
+
+
+
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0, false);

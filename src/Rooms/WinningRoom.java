@@ -17,12 +17,17 @@ public class WinningRoom extends Room
 	 */
 	@Override
 	public void enterRoom(Person x) {
-
-		occupant = x;
-		x.setxLoc(this.xLoc);
-		x.setyLoc(this.yLoc);
-		System.out.println("You found the winning room! Ten points for Gryffindor.");
-		Runner.gameOff();
+		if (x.getKey()) {
+			occupant = x;
+			x.setxLoc(this.xLoc);
+			x.setyLoc(this.yLoc);
+			System.out.println("You found the winning room! Ten points for Gryffindor.");
+			Runner.gameOff();
+		}
+		else{
+			occupant = x;
+			System.out.println("The door of this room seems to be locked, you need a key!")
+		}
 	}
 	
 

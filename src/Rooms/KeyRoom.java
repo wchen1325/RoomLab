@@ -3,6 +3,7 @@ package Rooms;
 import People.Person;
 
 public class KeyRoom extends Room{
+
     public KeyRoom (int x, int y){
         super(x, y);
     }

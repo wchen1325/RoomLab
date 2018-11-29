@@ -1,5 +1,6 @@
 package Rooms;
 
+import Game.Runner;
 import People.Person;
 
 public class KeyRoom extends Room{
@@ -8,6 +9,7 @@ public class KeyRoom extends Room{
         super(x, y);
     }
 
+    @Override
     public void enterRoom(Person x){
         System.out.println("You enter a plain old room, you found a golden key!");
         occupant = x;

@@ -26,7 +26,7 @@ public class WinningRoom extends Room
 		}
 		else{
 			occupant = x;
-			System.out.println("The door of this room seems to be locked, you need a key!")
+			System.out.println("The door of this room seems to be locked, you need a key!");
 		}
 	}
 	

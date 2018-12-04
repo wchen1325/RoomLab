@@ -19,4 +19,16 @@ public class Board {
         }
         return str;
     }
+
+    public void print(){
+        String str = "";
+
+        for ( int i = 0; i < board.length;i++){
+            for(int j = 0; j<board[i].length; j++){
+                str += board[i][j].toString();
+            }
+            str += "\n";
+        }
+        System.out.println(str);
+    }
 }

@@ -18,4 +18,8 @@ public class KeyRoom extends Room{
         x.setKey (true);
     }
 
+    public String toString(){
+        return "[K]";
+    }
+
 }

@@ -4,6 +4,7 @@ import People.Person;
 import Rooms.KeyRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
+import Board.Board;
 
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
+		Room[][] building = new Room[10][10];
 		
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -38,9 +39,11 @@ public class Runner {
 			x2 = (int) (Math.random() * building.length);
 			y2 = (int) (Math.random() * building.length);
 		}
-		building[x][y] = new KeyRoom(x2, y2);
+
+		building[x2][y2] = new KeyRoom(x2, y2);
 
 
+		Board floor1 = new Board(building);
 
 		 
 		 //Setup player 1 and the input scanner
@@ -49,6 +52,7 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
+			floor1.print();
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))

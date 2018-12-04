@@ -29,6 +29,10 @@ public class WinningRoom extends Room
 			System.out.println("The door of this room seems to be locked, you need a key!");
 		}
 	}
+
+	public String toString(){
+		return "[W]";
+	}
 	
 
 }

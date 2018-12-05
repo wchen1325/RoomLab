@@ -34,7 +34,7 @@ public class Room {
 	}
 
 	public String toString(){
-		return " ";
+		return "[ ]";
 	}
 	
 }

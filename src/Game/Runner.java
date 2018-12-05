@@ -15,6 +15,20 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
+		System.out.println("▒▒▒▒▒▒▒█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n" +
+				"▒▒▒▒▒▒▒█░▒▒▒▒▒▒▒▓▒▒▓▒▒▒▒▒▒▒░█\n" +
+				"▒▒▒▒▒▒▒█░▒▒▓▒▒▒▒▒▒▒▒▒▄▄▒▓▒▒░█░▄▄\n" +
+				"▒▒▄▀▀▄▄█░▒▒▒▒▒▒▓▒▒▒▒█░░▀▄▄▄▄▄▀░░█\n" +
+				"▒▒█░░░░█░▒▒▒▒▒▒▒▒▒▒▒█░░░░░░░░░░░█\n" +
+				"▒▒▒▀▀▄▄█░▒▒▒▒▓▒▒▒▓▒█░░░█▒░░░░█▒░░█\n" +
+				"▒▒▒▒▒▒▒█░▒▓▒▒▒▒▓▒▒▒█░░░░░░░▀░░░░░█\n" +
+				"▒▒▒▒▒▄▄█░▒▒▒▓▒▒▒▒▒▒▒█░░█▄▄█▄▄█░░█\n" +
+				"▒▒▒▒█░░░█▄▄▄▄▄▄▄▄▄▄█░█▄▄▄▄▄▄▄▄▄█\n" +
+				"▒▒▒▒█▄▄█░░█▄▄█░░░░░░█▄▄█░░█▄▄█\n" +
+				"PRESS ENTER TO START!");
+		Scanner in = new Scanner(System.in);
+		String start = in.nextLine();
+
 		Room[][] building = new Room[10][10];
 		Board floor1 = new Board(building);
 
@@ -28,7 +42,7 @@ public class Runner {
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0, false);
 		building[0][0].enterRoom(player1);
-		Scanner in = new Scanner(System.in);
+
 		while(gameOn)
 		{
 			System.out.println(floor1.toString());

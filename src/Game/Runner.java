@@ -16,44 +16,23 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[10][10];
-		
-		//Fill the building with normal rooms
-		for (int x = 0; x<building.length; x++)
-		{
-			for (int y = 0; y < building[x].length; y++)
-			{
-				building[x][y] = new Room(x,y);
-			}
-		}
-		
-		//Create a random winning room.
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
-
-		//Create a random key room
-		int x2 = 0;
-		int y2 = 0;
-
-		while(x == x2 && y ==y2) {
-			x2 = (int) (Math.random() * building.length);
-			y2 = (int) (Math.random() * building.length);
-		}
-
-		building[x2][y2] = new KeyRoom(x2, y2);
-
-
 		Board floor1 = new Board(building);
 
-		 
+		//Fill the building with normal rooms
+		floor1.fillRoom();
+		
+		//Create a random winning, key, room.
+		floor1.createSpecialRooms();
+
+
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0, false);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			floor1.print();
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println(floor1.toString());
+			System.out.println("Where would you like to move? (Choose W, S, A, D)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -80,7 +59,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -91,7 +70,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -115,7 +94,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);

@@ -31,7 +31,7 @@ public class WinningRoom extends Room
 	}
 
 	public String toString(){
-		return "[w]";
+		return "w ";
 	}
 	
 

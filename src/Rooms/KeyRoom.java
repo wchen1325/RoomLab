@@ -19,7 +19,7 @@ public class KeyRoom extends Room{
     }
 
     public String toString(){
-        return "[K]";
+        return "k ";
     }
 
 }

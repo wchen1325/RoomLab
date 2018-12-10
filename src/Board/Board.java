@@ -3,6 +3,7 @@ package Board;
 import Rooms.KeyRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
+import Rooms.Wall;
 
 public class Board {
     private Room[][] board;
@@ -40,7 +41,7 @@ public class Board {
         {
             for (int y = 0; y < board[x].length; y++)
             {
-                board[x][y] = new Room(x,y);
+                board[x][y] = new Wall(x,y);
             }
         }
     }

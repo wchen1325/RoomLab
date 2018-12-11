@@ -29,14 +29,16 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		String start = in.nextLine();
 
-		Room[][] building = new Room[10][10];
+		Room[][] building = new Room[40][40];
 		Board floor1 = new Board(building);
 
-		//Fill the building with normal rooms
-		floor1.fillRoom();
+		//Fill the building with normal room
+		// s
+		floor1.fillWall();
+		floor1.generateMaze();
 		
 		//Create a random winning, key, room.
-		floor1.createSpecialRooms();
+		//floor1.createSpecialRooms();
 
 
 		 //Setup player 1 and the input scanner

@@ -36,7 +36,7 @@ public class Board {
     }*/
 
     //Fill the building with normal rooms
-    public void fillRoom(){
+    public void fillWall(){
         for (int x = 0; x < board.length; x++)
         {
             for (int y = 0; y < board[x].length; y++)
@@ -45,6 +45,46 @@ public class Board {
             }
         }
     }
+
+    public void generateMaze(){
+        int x = (int)(Math.random()*board.length);
+        int y = (int)(Math.random()*board.length);
+
+        while(x=0 || x=board.length || y=0 || y=board.length){
+            x = (int)(Math.random()*board.length);
+            y = (int)(Math.random()*board.length);
+        }
+        int[][] wallList = new int[board.length][board.length];
+
+        wallList[x+1][y]= 1;
+        wallList[x][y+1]=1;
+        wallList[x-1][y-1]=1;
+        wallList[x][y-1]=1;
+
+        boolean containsWall = true;
+        while (containsWall = true){
+
+            
+            //start here
+
+
+
+            containsWall = false;
+            for (int i = 0; i < wallList.length; i++)
+            {
+                for (int j = 0; j < wallList[i].length; j++)
+                {
+                    if(wallList[i][j] == 1){
+                        containsWall = true;
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
 
     public void createSpecialRooms(){
         int x = (int)(Math.random()*board.length);

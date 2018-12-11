@@ -1,6 +1,7 @@
 package Rooms;
 
 import Game.Runner;
+import People.Person;
 
 public class Wall extends Room{
 
@@ -8,7 +9,7 @@ public class Wall extends Room{
         super(x, y);
     }
 
-    public void enterRoom(){
+    public void enterRoom(Person x){
         System.out.println("That's a wall!");
     }
 

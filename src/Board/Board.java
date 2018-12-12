@@ -50,7 +50,7 @@ public class Board {
         int x = (int)(Math.random()*board.length);
         int y = (int)(Math.random()*board.length);
 
-        while(x=0 || x=board.length || y=0 || y=board.length){
+        while(x==0 || x==board.length || y==0 || y==board.length){
             x = (int)(Math.random()*board.length);
             y = (int)(Math.random()*board.length);
         }

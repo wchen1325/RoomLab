@@ -35,16 +35,6 @@ public class Board {
         System.out.println(str);
     }*/
 
-    //Fill the building with normal rooms
-    public void fillWall(){
-        for (int x = 0; x < board.length; x++)
-        {
-            for (int y = 0; y < board[x].length; y++)
-            {
-                board[x][y] = new Wall(x,y);
-            }
-        }
-    }
 
     public void generateMaze(){
         int x = (int)(Math.random()*board.length);
@@ -56,27 +46,69 @@ public class Board {
         }
         int[][] wallList = new int[board.length][board.length];
 
+        //3 == Cell part of the maze
+        //2 == on wallList visited twice, true wall
+        //1 == on wallList visited once
+        //0 == not on wallList;
+
+        wallList[x][y] = 3;
         wallList[x+1][y]= 1;
         wallList[x][y+1]=1;
-        wallList[x-1][y-1]=1;
+        wallList[x-1][y]=1;
         wallList[x][y-1]=1;
+        int wallCount = 1;
 
-        boolean containsWall = true;
-        while (containsWall = true){
+        while (wallCount > 0){
+            int randomWall = (int)(Math.random()*wallCount);
 
-            
-            //start here
+            for (int i = 0; i < wallList.length; i++){
+                for (int j = 0; j < wallList[i].length;j++){
+                    if (wallList[i][j] == 1){
+                        if(randomWall == 0){
+                            wallList[i][j] = 3;
+                            if(i < wallList.length-1) {
+                                wallList[i+1][j]++;
+                            }
+                            if(j < wallList.length-1) {
+                                wallList[i][j+1]++;
+                            }
+                            if(i > 1) {
+                                wallList[i-1][j]++;
+                            }
+                            if(j > 1) {
+                                wallList[i][j-1]++;
+                            }
+                        }
+                        else{
+                            randomWall--;
+                        }
 
+                    }
+                }
+            }
 
-
-            containsWall = false;
-            for (int i = 0; i < wallList.length; i++)
+            //check if there are still walls in the list
+            wallCount = 0;
+            for ( int i = 0; i < wallList.length; i++)
             {
-                for (int j = 0; j < wallList[i].length; j++)
+                for ( int j = 0; j < wallList[i].length; j++)
                 {
                     if(wallList[i][j] == 1){
-                        containsWall = true;
+                        wallCount++;
                     }
+                }
+            }
+        }
+
+        for (int i = 0; i < board.length; i++)
+        {
+            for (int j = 0; j < board[x].length; j++)
+            {
+                if(wallList[i][j] == 2) {
+                    board[i][j] = new Wall(i, j);
+                }
+                else{
+                    board[i][j] = new Room(i, j);
                 }
             }
         }

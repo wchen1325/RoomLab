@@ -34,7 +34,7 @@ public class Runner {
 
 		//Fill the building with normal room
 		// s
-		floor1.fillWall();
+
 		floor1.generateMaze();
 		
 		//Create a random winning, key, room.

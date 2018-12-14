@@ -29,7 +29,7 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		String start = in.nextLine();
 
-		Room[][] building = new Room[40][40];
+		Room[][] building = new Room[11][11];
 		Board floor1 = new Board(building);
 
 		//Fill the building with normal room

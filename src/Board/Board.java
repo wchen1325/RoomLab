@@ -40,23 +40,31 @@ public class Board {
         int x = (int)(Math.random()*board.length);
         int y = (int)(Math.random()*board.length);
 
-        while(x==0 || x==board.length || y==0 || y==board.length){
+        while(x < 2 || x > board.length - 2 || y < 2 || y > board.length - 2 || x%2 == 1 || y % 2 ==1){
             x = (int)(Math.random()*board.length);
             y = (int)(Math.random()*board.length);
         }
         int[][] wallList = new int[board.length][board.length];
 
         //3 == Cell part of the maze
-        //2 == on wallList visited twice, true wall
+        //2 == on wallList visited twice, part of the maze as a wall
         //1 == on wallList visited once
         //0 == not on wallList;
 
+        for (int i = 0; i < wallList.length - 1; i = i = i+2){
+            for (int j = 0; j < wallList[j].length - 1; j = j+2){
+                wallList[i][j] = 2;
+            }
+        }
+
         wallList[x][y] = 3;
-        wallList[x+1][y]= 1;
-        wallList[x][y+1]=1;
-        wallList[x-1][y]=1;
-        wallList[x][y-1]=1;
+        wallList[x+2][y]= 1;
+        wallList[x][y+2]=1;
+        wallList[x-2][y]=1;
+        wallList[x][y-2]=1;
         int wallCount = 1;
+
+
 
         while (wallCount > 0){
             int randomWall = (int)(Math.random()*wallCount);
@@ -67,16 +75,20 @@ public class Board {
                         if(randomWall == 0){
                             wallList[i][j] = 3;
                             if(i < wallList.length-1) {
-                                wallList[i+1][j]++;
+                                wallList[i+1][j] = 3;
+                                wallList[i+2][j]++;
                             }
                             if(j < wallList.length-1) {
-                                wallList[i][j+1]++;
+                                wallList[i][j+1] = 3;
+                                wallList[i][j+2]++;
                             }
                             if(i > 1) {
-                                wallList[i-1][j]++;
+                                wallList[i-1][j] = 3;
+                                wallList[i-2][j]++;
                             }
                             if(j > 1) {
-                                wallList[i][j-1]++;
+                                wallList[i][j-1] = 3;
+                                wallList[i][j-2]++;
                             }
                         }
                         else{

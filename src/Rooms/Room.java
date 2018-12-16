@@ -34,7 +34,12 @@ public class Room {
 	}
 
 	public String toString(){
-		return "  ";
+		if (!(occupant== null)){
+			return "░";
+		}
+		else {
+			return "▒";
+		}
 	}
 	
 }

@@ -27,9 +27,8 @@ public class Runner {
 				"▒▒▒▒█▄▄█░░█▄▄█░░░░░░█▄▄█░░█▄▄█\n" +
 				"PRESS ENTER TO START!");
 		Scanner in = new Scanner(System.in);
-		String start = in.nextLine();
 
-		Room[][] building = new Room[11][11];
+		Room[][] building = new Room[21][21];
 		Board floor1 = new Board(building);
 
 		//Fill the building with normal room
@@ -43,7 +42,7 @@ public class Runner {
 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0, false);
-		building[0][0].enterRoom(player1);
+		building[1][1].enterRoom(player1);
 
 		while(gameOn)
 		{

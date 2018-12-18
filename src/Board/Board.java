@@ -15,6 +15,7 @@ public class Board {
         this.board= board;
         mapNotReveal= new boolean[board.length][board.length];
         generateMaze();
+        createAllSpecialRooms();
     }
 
     public Board (Room[][] Board, int Easy){
@@ -26,6 +27,7 @@ public class Board {
             }
         }
         generateMaze();
+        createAllSpecialRooms();
     }
 
     public String toString(Person player1) {
@@ -59,7 +61,7 @@ public class Board {
 
     public void generateMaze(){
         wallList = new int[board.length][board.length];
-
+        //4 = SpecialRoom
         //3 == Cell marked
         //2 == Cell not marked
         //1 == walls that turn into cells
@@ -129,12 +131,12 @@ public class Board {
             }
 
 
-            if(cellUnmarked>0 && availablePaths(x,y) == 0){
+            if(cellUnmarked>0 && availablePaths(x,y,2,3) == 0){
                 for ( int i = 0; i < wallList.length; i++)
                 {
                     for ( int j = 0; j < wallList.length; j++)
                     {
-                        if(wallList[i][j] == 3 && availablePaths(i,j)>0){
+                        if(wallList[i][j] == 3 && availablePaths(i,j,2,3)>0){
                             x = i;
                             y = j;
                         }
@@ -162,36 +164,69 @@ public class Board {
 
     }
 
-    public int availablePaths(int x, int y){
+    public int availablePaths(int x, int y, int z,int cellType){
         int availablePaths = 4;
-        if ((y == 1) || wallList[x][y-2]==3) {
+        if ((y == 1) || wallList[x][y-z]==cellType) {
             availablePaths--;
         }
-        if ((y == wallList.length - 2) || wallList[x][y+2]==3) {
+        if ((y == wallList.length - 2) || wallList[x][y+z]==cellType) {
             availablePaths--;
         }
-        if ((x == 1) || wallList[x-2][y]==3) {
+        if ((x == 1) || wallList[x-z][y]==cellType) {
             availablePaths--;
         }
-        if ((x == wallList.length - 2) ||  wallList[x+2][y]==3) {
+        if ((x == wallList.length - 2) ||  wallList[x+z][y]==cellType) {
             availablePaths--;
         }
         return availablePaths;
     }
 
-    public void createSpecialRooms(){
-        int x = (int)(Math.random()*board.length);
-        int y = (int)(Math.random()*board.length);
-        board[x][y] = new WinningRoom(x, y);
-
-        int x2 = (int) (Math.random() * board.length);
-        int y2 = (int) (Math.random() * board.length);
-
-        while(x == x2 && y ==y2) {
-            x2 = (int) (Math.random() * board.length);
-            y2 = (int) (Math.random() * board.length);
+    public int[] locatePosition(){
+        int count = 0;
+        for (int i = 1; i < board.length-1; i++) {
+            for (int j = 1; j < board.length-1; j++) {
+                if(availablePaths(i, j, 1,0)==1 && !(wallList[i][j] == 4) &&wallList[i][j]==3){
+                    count++;
+                }
+            }
         }
+        int random = (int)((count*Math.random())+1);
 
-        board[x2][y2] = new KeyRoom(x2, y2);
+        int x = 0;
+        int y = 0;
+        for (int i = 1; i < board.length-1; i++) {
+            for (int j = 1; j < board[i].length-1; j++) {
+                if (availablePaths(i, j, 1,0) == 1 && random ==0 && !(wallList[i][j] == 4)&&wallList[i][j]==3) {
+                    x = i;
+                    y = j;
+                }
+                else if(availablePaths(i, j, 1,0) == 1 && !(wallList[i][j] == 4)&&wallList[i][j]==3){
+                    random--;
+                }
+            }
+        }
+        int values[]=new int[2];
+        values[0]=x;
+        values[1]=y;
+        return values;
+    }
+
+    public void createRoom(int[] position,Room specialRoom){
+        board[position[0]][position[1]] = specialRoom;
+        wallList[position[0]][position[1]]= 4;
+    }
+
+    public void createAllSpecialRooms(){
+        int position[] = locatePosition();
+        int x = position[0];
+        int y = position[1];
+        createRoom(position, new KeyRoom(x,y));
+
+        /*int tempPosition[] = locatePosition();
+        position[0] = tempPosition[0];
+        position[1] = tempPosition[1];
+        x = position[0];
+        y = position[1];
+        createRoom(position, new WinningRoom(x,y));*/
     }
 }

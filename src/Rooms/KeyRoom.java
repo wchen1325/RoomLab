@@ -4,7 +4,7 @@ import Game.Runner;
 import People.Person;
 
 public class KeyRoom extends Room{
-
+    private int keyTaken = 0;
     public KeyRoom (int x, int y){
         super(x, y);
     }
@@ -19,11 +19,18 @@ public class KeyRoom extends Room{
     }
 
     public String toString(){
+
         if (!(occupant== null)){
+            keyTaken++;
             return "P ";
         }
         else {
-            return "K ";
+            if(keyTaken>0) {
+                return "▒";
+            }
+            else{
+                return "K";
+            }
         }
     }
 

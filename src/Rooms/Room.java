@@ -5,6 +5,7 @@ import People.Person;
 public class Room {
 	Person occupant;
 	int xLoc,yLoc;
+
 	
 	public Room(int x, int y)
 	{
@@ -38,8 +39,12 @@ public class Room {
 			return "░";
 		}
 		else {
-			return "▒";
+				return "▒";
 		}
 	}
-	
+
+	public boolean isRoom(){
+		return true;
+	}
+
 }

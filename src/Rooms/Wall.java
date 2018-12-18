@@ -14,6 +14,10 @@ public class Wall extends Room{
     }
 
     public String toString(){
-        return "█";
+            return "█";
+    }
+
+    public boolean isRoom(){
+        return false;
     }
 }

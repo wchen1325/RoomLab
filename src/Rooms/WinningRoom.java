@@ -26,12 +26,19 @@ public class WinningRoom extends Room
 		}
 		else{
 			occupant = x;
+			x.setxLoc(this.xLoc);
+			x.setyLoc(this.yLoc);
 			System.out.println("The door of this room seems to be locked, you need a key!");
 		}
 	}
 
 	public String toString(){
-		return "w ";
+		if (!(occupant== null)){
+			return "P ";
+		}
+		else {
+			return "W ";
+		}
 	}
 	
 

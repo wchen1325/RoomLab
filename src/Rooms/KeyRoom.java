@@ -19,7 +19,12 @@ public class KeyRoom extends Room{
     }
 
     public String toString(){
-        return "k ";
+        if (!(occupant== null)){
+            return "P ";
+        }
+        else {
+            return "K ";
+        }
     }
 
 }

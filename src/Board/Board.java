@@ -182,6 +182,7 @@ public class Board {
     }
 
     public int[] locatePosition(){
+        wallList[1][1]=4;
         int count = 0;
         for (int i = 1; i < board.length-1; i++) {
             for (int j = 1; j < board.length-1; j++) {
@@ -190,7 +191,7 @@ public class Board {
                 }
             }
         }
-        int random = (int)((count*Math.random())+1);
+        int random = (int)((count*Math.random()));
 
         int x = 0;
         int y = 0;
@@ -222,11 +223,11 @@ public class Board {
         int y = position[1];
         createRoom(position, new KeyRoom(x,y));
 
-        /*int tempPosition[] = locatePosition();
+        int tempPosition[] = locatePosition();
         position[0] = tempPosition[0];
         position[1] = tempPosition[1];
         x = position[0];
         y = position[1];
-        createRoom(position, new WinningRoom(x,y));*/
+        createRoom(position, new WinningRoom(x,y));
     }
 }

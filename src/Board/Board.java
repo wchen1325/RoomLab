@@ -14,6 +14,18 @@ public class Board {
     public Board (Room[][] board){
         this.board= board;
         mapNotReveal= new boolean[board.length][board.length];
+        generateMaze();
+    }
+
+    public Board (Room[][] Board, int Easy){
+        this.board= Board;
+        mapNotReveal= new boolean[board.length][board.length];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+            mapNotReveal[i][j]=true;
+            }
+        }
+        generateMaze();
     }
 
     public String toString(Person player1) {

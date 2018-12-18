@@ -25,16 +25,21 @@ public class Runner {
 				"▒▒▒▒▒▄▄█░▒▒▒▓▒▒▒▒▒▒▒█░░█▄▄█▄▄█░░█\n" +
 				"▒▒▒▒█░░░█▄▄▄▄▄▄▄▄▄▄█░█▄▄▄▄▄▄▄▄▄█\n" +
 				"▒▒▒▒█▄▄█░░█▄▄█░░░░░░█▄▄█░░█▄▄█\n" +
-				"PRESS ENTER TO START!");
+				"HARD MODE?[Y/N]");
 		Scanner in = new Scanner(System.in);
 
-		Room[][] building = new Room[21][21];
-		Board floor1 = new Board(building);
 
-		//Fill the building with normal room
-		// s
+		int easy = 11;
+		Room[][] building = new Room[easy][easy];
+		Board floor1 = new Board(building, easy);
 
-		floor1.generateMaze();
+		if(in.nextLine().equals("Y")){
+			building = new Room[21][21];
+			floor1 = new Board(building);
+		}
+
+
+
 		
 		//Create a random winning, key, room.
 		//floor1.createSpecialRooms();

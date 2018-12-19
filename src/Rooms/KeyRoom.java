@@ -11,15 +11,15 @@ public class KeyRoom extends Room{
 
     @Override
     public void enterRoom(Person x){
-        System.out.println("You enter a plain old room, you found a golden key!");
+        System.out.println("YOU HAVE OBTAINED A GOLDEN KEY!");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
         x.setKey (true);
     }
 
+    //returns "K" when key not taken, "P" when player is in this location, and "▒"(normal room) when key is taken.
     public String toString(){
-
         if (!(occupant== null)){
             keyTaken++;
             return "P ";
@@ -29,7 +29,7 @@ public class KeyRoom extends Room{
                 return "▒";
             }
             else{
-                return "K";
+                return "K ";
             }
         }
     }

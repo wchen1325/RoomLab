@@ -26,9 +26,11 @@ public class Runner {
 				"▒▒▒▒█░░░█▄▄▄▄▄▄▄▄▄▄█░█▄▄▄▄▄▄▄▄▄█\n" +
 				"▒▒▒▒█▄▄█░░█▄▄█░░░░░░█▄▄█░░█▄▄█\n" +
 				"HARD MODE?[Y/N]");
+		//input scanner
 		Scanner in = new Scanner(System.in);
 
-
+		//Choose easy or hard mode for two different board to be created.
+		//can replace the numbers. but only odd numbers should be inputted.
 		int easy = 11;
 		Room[][] building = new Room[easy][easy];
 		Board floor1 = new Board(building, easy);
@@ -39,13 +41,7 @@ public class Runner {
 		}
 
 
-
-		
-		//Create a random winning, key, room.
-		//floor1.createSpecialRooms();
-
-
-		 //Setup player 1 and the input scanner
+		 //Setup player 1
 		Person player1 = new Person("FirstName", "FamilyName", 0,0, false);
 		building[1][1].enterRoom(player1);
 

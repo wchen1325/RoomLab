@@ -19,7 +19,6 @@ public class Room {
 	 */
 	public void enterRoom(Person x)
 	{
-		System.out.println("You enter a plain old room");
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
@@ -43,6 +42,7 @@ public class Room {
 		}
 	}
 
+	//This is a room that the player can go into
 	public boolean isRoom(){
 		return true;
 	}

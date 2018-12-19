@@ -9,6 +9,8 @@ public class Wall extends Room{
         super(x, y);
     }
 
+    //overrides methods from Room
+    //Does not change player location because its a wall, only a line is printed to notify the player.
     public void enterRoom(Person x){
         System.out.println("That's a wall!");
     }
@@ -17,6 +19,7 @@ public class Wall extends Room{
             return "▓";
     }
 
+    //player cannot be in this position
     public boolean isRoom(){
         return false;
     }

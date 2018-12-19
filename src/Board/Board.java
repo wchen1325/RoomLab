@@ -11,6 +11,8 @@ public class Board {
     private int wallList[][];
     private boolean mapNotReveal[][];
 
+    //Two Board constructors, one for easy mode and the other for hard.
+
     public Board (Room[][] board){
         this.board= board;
         mapNotReveal= new boolean[board.length][board.length];
@@ -30,6 +32,7 @@ public class Board {
         createAllSpecialRooms();
     }
 
+    //return a string of the board to be printed upon every move.
     public String toString(Person player1) {
         mapReveal(player1);
         String str = "";
@@ -47,6 +50,8 @@ public class Board {
         return str;
     }
 
+    //reveal the 9 tiles surrounding the player when ever the player moves.
+    //in easy mode, the entire board will be revealed from the start.
     public void mapReveal(Person p){
         mapNotReveal[p.getxLoc()][p.getyLoc()]= true;
         mapNotReveal[p.getxLoc()+1][p.getyLoc()]= true;
@@ -59,6 +64,8 @@ public class Board {
         mapNotReveal[p.getxLoc()-1][p.getyLoc()+1]= true;
     }
 
+    //Turning the board into a maze, that's different for every run.
+    //Only works with odd numbered board length and height.
     public void generateMaze(){
         wallList = new int[board.length][board.length];
         //4 = SpecialRoom
@@ -164,6 +171,9 @@ public class Board {
 
     }
 
+    //helper method used to determine the directions to go
+    //Used in generating the maze,
+    //and when placing the special rooms(to find cells surrounded by three walls)
     public int availablePaths(int x, int y, int z,int cellType){
         int availablePaths = 4;
         if ((y == 1) || wallList[x][y-z]==cellType) {
@@ -181,6 +191,8 @@ public class Board {
         return availablePaths;
     }
 
+    //a method used to a cell that can be replaced with a special room,
+    //only cells surrounded by exactly three walls will be chosen at random.
     public int[] locatePosition(){
         wallList[1][1]=4;
         int count = 0;
@@ -212,11 +224,13 @@ public class Board {
         return values;
     }
 
+    //Create any specialRoom inputted into the parameter at the position generated from locatePosition() method.
     public void createRoom(int[] position,Room specialRoom){
         board[position[0]][position[1]] = specialRoom;
         wallList[position[0]][position[1]]= 4;
     }
 
+    //A runner that put together all Special rooms to be added into the board.
     public void createAllSpecialRooms(){
         int position[] = locatePosition();
         int x = position[0];

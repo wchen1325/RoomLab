@@ -109,6 +109,7 @@ public class Person {
 		return true;
 	}
 
+	//In order to enter the winningRoom and win, a player must first obtain the key
 	public void setKey(boolean hasKey){
 		this.hasKey = hasKey;
 	}
